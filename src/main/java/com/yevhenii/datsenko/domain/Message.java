@@ -1,12 +1,11 @@
 package com.yevhenii.datsenko.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
-/**
- * Created by Yevhenii on 4/7/2017.
- */
+@Document
 public class Message implements Serializable {
     @Id
     private String id;
@@ -17,7 +16,7 @@ public class Message implements Serializable {
 
     public Message() {}
 
-    public Message(Builder builder) {
+    Message(Builder builder) {
         this.timestamp = builder.timestamp;
         this.sender = builder.sender;
         this.receiver = builder.receiver;

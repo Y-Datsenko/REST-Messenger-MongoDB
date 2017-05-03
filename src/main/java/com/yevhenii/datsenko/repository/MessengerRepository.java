@@ -1,6 +1,7 @@
 package com.yevhenii.datsenko.repository;
 
 import com.yevhenii.datsenko.domain.Message;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.Repository;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public interface MessengerRepository extends Repository<Message, String> {
      */
     List<Message> findAll();
 
+    @Query("{'sender' : { $in: [ ?0, ?1]},'receiver' : { $in: [ ?0, ?1]}}")
     List<Message> findMessagesBySenderAndReceiver(String sender, String receiver);
 
     /**

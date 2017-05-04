@@ -1,0 +1,11 @@
+mongod --dbpath C:\repl\my_database_1 --port 27001 --replSet My_Replica_Set --logpath C:\repl\my_database_1\my_database_1.log
+
+mongod --dbpath C:\repl\my_database_2 --port 27002 --replSet My_Replica_Set --logpath C:\repl\my_database_1\my_database_2.log
+
+mongod --dbpath C:\repl\my_database_3 --port 27003 --replSet My_Replica_Set --logpath C:\repl\my_database_1\my_database_3.log
+
+mongo --host 127.0.0.1 --port 27001
+
+rs.initiate()
+rs.add(“<user_pc_name>:27002")
+rs.add(“<user_pc_name>:27003”)
